@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tutorville</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+	
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/foundation.css" />
+	<link rel="stylesheet" type="text/css" href="css/tutorville.css" />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="js/libraries/mustache.js"></script>
+	<script src="js/tutorville.js"></script>
+</head>
+<body>
+	<header>
+		<div class="row">
+			<div class="column medium-9 text-center medium-text-left">
+				<img src="images/tutorville-logo.png" alt="Tutorsville, Find Your Perfect Tutor" id="headerLogo">
+			</div>
+			<div class="column medium-3 text-right hide medium-show">
+				<a href="#" class="btn-signIn">Sign In</a>
+			</div>
+		</div>
+	</header>
+	
+	<nav id="mainNav" class="row">
+		<div class="column hide medium-show text-center">
+			<a href="#">Search</a>
+			<a href="#">Students</a>
+			<a href="#">Tutors</a>
+			<a href="#">Resources</a>
+			<a href="#">How It Works</a>
+		</div>
+		<div class="column small-6 medium-hide">
+			<a href="#"><i class="fa fa-bars"></i></a>
+		</div>
+		<div class="column small-6 text-right medium-hide">
+			<a href="#">Sign In</a>
+		</div>
+	</nav>
+
+		
+	</div>
+	<div id="bodyContent" class="row">
+		<div id="tutorResults" class="column medium-9">
+
+		</div>
+		<div id="searchBar" class="column medium-3">
+			<div >
+			<!-- 	<div class="column medium-9"> -->
+					<input id="subject-field" placeholder="Subject" type="text" />
+					<select id="sort-order" name="sort-order">
+					  <option value="highest-rank">Highest Rank</option>
+					  <option value="lowest-rank">Lowest Rank</option>
+					  <option value="highest-price">Highest Price</option>
+					  <option value="lowest-price">Lowest Price</option>
+					</select>
+					<label for="is-online" class="checkbox"><input id="is-online" type="checkbox"/>Is Online?</label>
+					<label for="near-by"class="checkbox"><input id="near-by" type="checkbox" />Near By?</label>
+				<!-- </div> -->
+		</div>
+	</div>
+	<script id="tutorTemplate" type="x-tmpl-mustache">
+		<h2>{{SeachCount}} Tutor{{#TutorCountIsNotOne}}s{{/TutorCountIsNotOne}} Found</h2>
+		<hr class="thick">
+		{{#SearchResults}}
+		<div class="tutorResult">
+			<div class="row spc-sm-s">
+				<div class="column small-6">
+					<h3>{{Name}}</h3> 
+				</div>
+				<div class="column small-6 text-right">
+					${{HourlyRate}}.00
+				</div>
+			</div>
+			<div class="row">
+				<div class="column medium-2 small-4">
+					<img src="images/tutor-image.png" class="tutorImage">
+				
+					<div class="starRating">
+						<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+						<div class="starsFull" style="width: {{starPercent}}%"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+					</div>
+					<hr>
+					<p class="online-{{IsOnline}}">
+						Online
+					</p>
+					<p>
+						{{Distance}} miles<br>
+						{{City}}, {{State}} {{Zipcode}}
+					</p>
+				</div>
+				<div class="column medium-10 small-8">
+					<h4>{{Title}}</h4>
+					<p>{{Desc}} <a href="#">read more</a></p>
+					
+					<div class="box-gray clearfix">
+						<div class="column medium-6 spc-sm-s medium-spc-zero">
+							<a href="#">{{RatingCount}} Ratings</a>
+						</div>
+						<div class="column medium-6">
+							<a href="#">Background Checked</a>
+						</div>
+					</div>
+					
+					<div class="text-right spc-med">
+						<a href="#" class="btn-blue">View this tutor</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/SearchResults}}
+	</script>
+	
+</body>
+</html>
